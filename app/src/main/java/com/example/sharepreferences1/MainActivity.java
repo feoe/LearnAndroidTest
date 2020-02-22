@@ -1,10 +1,13 @@
 package com.example.sharepreferences1;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import org.litepal.LitePal;
@@ -43,13 +47,33 @@ public class MainActivity extends AppCompatActivity {
         passwordEdit = (EditText) findViewById(R.id.passwordEdit);
         rememberPass = (CheckBox) findViewById(R.id.remember_pass);
         Button button1 = (Button) findViewById(R.id.button1);
-        boolean isRemember = pref.getBoolean("remember_password", false);
+
+//        发送通知点击监听
+        Button sendNotice =(Button)findViewById(R.id.sendNotice);
+        sendNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                Notification notification =new NotificationCompat.Builder(MainActivity.this)
+                        .setContentTitle("This is a content title")
+                        .setContentText("This is content text")
+                        .setWhen(System.currentTimeMillis())
+                        .setSmallIcon(R.drawable.ic_launcher_background)
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background))
+                        .build();
+                    manager.notify(1,notification);
+
+            }
+        });
+
 //        从pref文件(SharePreference文件)读取是否勾上记住密码
+        boolean isRemember = pref.getBoolean("remember_password", false);
+
         ListView contactsView = (ListView) findViewById(R.id.contacts_view);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contactsList);
-
         contactsView.setAdapter(adapter);
 //        获得ListView实例和创建适配器和ListView控件关联；
+
         if (isRemember) {
             String account = pref.getString("account", "");
             String password = pref.getString("password", "");
