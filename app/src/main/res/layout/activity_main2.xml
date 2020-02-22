@@ -9,21 +9,38 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/rememberAP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="展示账号密码" />
 
-   <EditText
+    <EditText
         android:id="@+id/accountEdit2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="账号" />
+
     <EditText
         android:id="@+id/passwordEdit2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="密码" />
+
+    <Button
+        android:id="@+id/ShowHttp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示HTTP数据" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ResponseText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
 
 </LinearLayout>

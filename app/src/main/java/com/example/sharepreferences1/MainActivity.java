@@ -13,6 +13,8 @@ import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -49,22 +51,31 @@ public class MainActivity extends AppCompatActivity {
         Button button1 = (Button) findViewById(R.id.button1);
 
 //        发送通知点击监听
-        Button sendNotice =(Button)findViewById(R.id.sendNotice);
+        Button sendNotice = (Button) findViewById(R.id.sendNotice);
         sendNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this,TextActivity1.class);
+                startActivity(intent);
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                Notification notification =new NotificationCompat.Builder(MainActivity.this)
+                Notification notification = new NotificationCompat.Builder(MainActivity.this)
                         .setContentTitle("This is a content title")
                         .setContentText("This is content text")
                         .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.drawable.ic_launcher_background)
-                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background))
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background))
                         .build();
-                    manager.notify(1,notification);
+                manager.notify(1, notification);
 
             }
         });
+
+//        显示网页
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().getJavaScriptEnabled();
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("http://www.bing.com");
+
 
 //        从pref文件(SharePreference文件)读取是否勾上记住密码
         boolean isRemember = pref.getBoolean("remember_password", false);
