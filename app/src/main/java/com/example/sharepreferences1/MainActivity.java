@@ -49,6 +49,23 @@ public class MainActivity extends AppCompatActivity {
         passwordEdit = (EditText) findViewById(R.id.passwordEdit);
         rememberPass = (CheckBox) findViewById(R.id.remember_pass);
         Button button1 = (Button) findViewById(R.id.button1);
+        final Button startService =(Button) findViewById(R.id.start_service);
+        startService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent =new Intent(MainActivity.this,MyService2.class);
+                startService(startIntent);
+            }
+        });
+        Button stopService =(Button)findViewById(R.id.stop_service);
+        stopService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent stopIntent =new Intent(MainActivity.this,MyService2.class);
+                stopService(stopIntent);
+            }
+        });
+
 
 //        发送通知点击监听
         Button sendNotice = (Button) findViewById(R.id.sendNotice);

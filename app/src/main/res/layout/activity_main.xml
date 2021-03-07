@@ -90,6 +90,39 @@
                 android:text="发送通知" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/button_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button ui"
+            />
+
+        <TextView
+            android:id="@+id/text_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="hello"
+            android:textSize="19dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="前台服务测试"
+            android:textSize="30dp"
+            android:gravity="center"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="前台服务开始"
+            android:id="@+id/start_service"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="前台服务关闭"
+            android:id="@+id/stop_service"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
